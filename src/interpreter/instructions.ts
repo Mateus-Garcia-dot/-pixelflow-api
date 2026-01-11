@@ -11,4 +11,8 @@ export function executeSetLEDRange(leds: LED[], position_start: number, position
   }
 }
 
-export default { executeSetLED, executeSetLEDRange };
+export function executeDelay(leds: LED[], instruction: number): void {
+  // No-op - delay is handled by the executor/device
+}
+
+export default { executeSetLED, executeSetLEDRange, executeDelay };

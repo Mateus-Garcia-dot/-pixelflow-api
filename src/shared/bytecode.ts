@@ -17,9 +17,15 @@ export interface SetLEDRangeInstruction {
   color: Color;
 }
 
+export interface DelayInstruction {
+  op: 'DELAY';
+  ms: number;
+}
+
 export type Instruction =
   | SetLEDInstruction
-  | SetLEDRangeInstruction;
+  | SetLEDRangeInstruction
+  | DelayInstruction;
 
 export interface Program {
   instructions: Instruction[];

@@ -51,6 +51,21 @@ test('should set LED range to blue', () => {
   assert.deepStrictEqual(result[6], { r: 0, g: 0, b: 0 });
 });
 
+test('should handle delay instruction (no-op)', () => {
+  const runner = new Runner(10);
+  const program = {
+    instructions: [
+      { op: 'SET_LED' as const, position: 0, color: { r: 255, g: 0, b: 0 } },
+      { op: 'DELAY' as const, ms: 1000 },
+      { op: 'SET_LED' as const, position: 1, color: { r: 0, g: 255, b: 0 } }
+    ]
+  };
+  const result = runner.run(program);
+
+  assert.deepStrictEqual(result[0], { r: 255, g: 0, b: 0 });
+  assert.deepStrictEqual(result[1], { r: 0, g: 255, b: 0 });
+});
+
 test('should throw error for unknown instruction', () => {
   const runner = new Runner(10);
   const program = {
