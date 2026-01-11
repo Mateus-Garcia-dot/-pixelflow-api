@@ -22,10 +22,16 @@ export interface DelayInstruction {
   ms: number;
 }
 
+export interface SetAllLEDsInstruction {
+  op: 'SET_ALL_LEDS';
+  color: Color;
+}
+
 export type Instruction =
   | SetLEDInstruction
   | SetLEDRangeInstruction
-  | DelayInstruction;
+  | DelayInstruction
+  | SetAllLEDsInstruction;
 
 export interface Program {
   instructions: Instruction[];

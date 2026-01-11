@@ -26,6 +26,9 @@ export class Runner {
         case 'DELAY':
           instructions.executeDelay(this.leds, instruction.ms);
           break;
+        case 'SET_ALL_LEDS':
+          instructions.executeSetAllLEDs(this.leds, instruction.color);
+          break;
         default:
           throw new UnknownInstructionError(instruction.op);
       }
